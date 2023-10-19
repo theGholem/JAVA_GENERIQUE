@@ -1,0 +1,5 @@
+Liste générique :
+
+   Créez une classe générique `MyList<T>` qui peut stocker une liste d'objets de n'importe quel type `T`. 
+   Ajoutez des méthodes pour ajouter des éléments, supprimer des éléments, obtenir la taille de la liste, 
+   et récupérer un élément à une position donnée.
