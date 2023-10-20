@@ -1,0 +1,117 @@
+Créez une classe générique MyDictionary<K, V> qui peut stocker des paires clé-valeur de n'importe quel 
+type K pour les clés et n'importe quel type V pour les valeurs. Ajoutez des méthodes pour ajouter une 
+paire clé-valeur, supprimer une paire en fonction de la clé, obtenir la taille du dictionnaire, et obtenir 
+la valeur associée à une clé donnée. Assurez-vous également de gérer les cas où la clé n'existe pas dans le 
+dictionnaire.
+
+Voici quelques étapes pour vous aider à démarrer avec cet exercice :
+
+   1 Créez une classe générique MyDictionary<K, V> avec deux paramètres de type K et V pour représenter les types 
+     des clés et des valeurs.
+
+   2 Ajoutez une méthode pour ajouter une paire clé-valeur au dictionnaire. Vous pouvez utiliser une structure de 
+     données appropriée,comme une liste ou un tableau, pour stocker les paires clé-valeur.
+
+   3 Ajoutez une méthode pour supprimer une paire en fonction de la clé donnée. Assurez-vous de gérer le cas où la 
+     clé n'existe pas dans le dictionnaire.
+
+   4 Ajoutez une méthode pour obtenir la taille du dictionnaire, c'est-à-dire le nombre de paires clé-valeur qu'il 
+     contient.
+
+   5 Ajoutez une méthode pour obtenir la valeur associée à une clé donnée. Assurez-vous de gérer le cas où la clé 
+     n'existe pas dans le dictionnaire.
+
+   6 Testez votre classe en créant une instance de MyDictionary, en ajoutant des paires clé-valeur, en supprimant 
+     des paires,en obtenant la taille et en récupérant des valeurs par clé.
+   
+   
+   
+   
+import java.util.ArrayList;
+import java.util.List;
+
+public class MyDictionary<K, V> {
+    private List<Pair<K, V>> entries;
+
+    public MyDictionary() {
+        entries = new ArrayList<>();
+    }
+
+    public void add(K key, V value) {
+        Pair<K, V> pair = new Pair<>(key, value);
+        entries.add(pair);
+    }
+
+    public void remove(K key) {
+        Pair<K, V> pairToRemove = null;
+        for (Pair<K, V> pair : entries) {
+            if (pair.getKey().equals(key)) {
+                pairToRemove = pair;
+                break;
+            }
+        }
+        if (pairToRemove != null) {
+            entries.remove(pairToRemove);
+        }
+    }
+
+    public int size() {
+        return entries.size();
+    }
+
+    public V getValue(K key) {
+        for (Pair<K, V> pair : entries) {
+            if (pair.getKey().equals(key)) {
+                return pair.getValue();
+            }
+        }
+        return null; // Retourne null si la clé n'est pas trouvée
+    }
+
+    private class Pair<K, V> {
+        private K key;
+        private V value;
+
+        public Pair(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
+
+        public K getKey() {
+            return this.key;
+        }
+
+        public V getValue() {
+            return this.value;
+        }
+    }
+
+    public static void main(String[] args) {
+        MyDictionary<String, Integer> dictionary = new MyDictionary<>();
+
+        // Ajout de paires clé-valeur
+        dictionary.add("clé1", 42);
+        dictionary.add("clé2", 100);
+        dictionary.add("clé3", 7);
+
+        // Obtention de la taille
+        System.out.println("Taille du dictionnaire : " + dictionary.size());
+
+        // Obtention de la valeur associée à une clé
+        String keyToLookup = "clé2";
+        Integer value = dictionary.getValue(keyToLookup);
+        if (value != null) {
+            System.out.println("Valeur associée à " + keyToLookup + " : " + value);
+        } else {
+            System.out.println("La clé " + keyToLookup + " n'existe pas dans le dictionnaire.");
+        }
+
+        // Suppression d'une paire clé-valeur
+        String keyToRemove = "clé1";
+        dictionary.remove(keyToRemove);
+
+        // Obtention de la taille après suppression
+        System.out.println("Taille du dictionnaire après suppression : " + dictionary.size());
+    }
+}
+   
