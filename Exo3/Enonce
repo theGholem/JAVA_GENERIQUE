@@ -1,0 +1,94 @@
+Créez une classe générique Stack<T> qui implémente une pile (structure de données de type LIFO - Last-In-First-Out) 
+pour des éléments de type T. Ajoutez des méthodes pour empiler (push) un élément, dépiler (pop) un élément, 
+obtenir la taille de la pile, et obtenir l'élément en haut de la pile sans le dépiler.
+
+Voici quelques étapes pour vous aider à résoudre cet exercice :
+
+ 1- Créez une classe générique Stack<T> avec un paramètre de type T pour représenter le type des éléments 
+    stockés dans la pile.
+
+ 2- Utilisez une structure de données appropriée (comme un tableau ou une liste) pour stocker les éléments 
+    de la pile.
+
+ 3- Ajoutez une méthode Push pour empiler un élément de type T sur la pile.
+
+ 4- Ajoutez une méthode Pop pour dépiler un élément de la pile et le renvoyer. 
+    Assurez-vous de gérer le cas où la pile est vide.
+
+ 5- Ajoutez une méthode Count pour obtenir la taille actuelle de la pile (le nombre d'éléments qu'elle contient).
+
+ 6- Ajoutez une méthode Peek pour obtenir l'élément en haut de la pile sans le dépiler. Assurez-vous de gérer 
+    le cas où la pile est vide.
+
+ 7- Testez votre classe en créant une instance de Stack, en empilant des éléments, en dépliant des éléments,
+    en obtenant la taille de la pile, et en consultant l'élément en haut de la pile.
+    
+    
+    
+    
+    
+    
+    
+ import java.util.ArrayList;
+import java.util.EmptyStackException;
+import java.util.List;
+
+public class Stack<T> {
+    private List<T> items = new ArrayList<>();
+
+    // Empiler un élément sur la pile
+    public void push(T item) {
+        items.add(item);
+    }
+
+    // Dépiler un élément de la pile et le renvoyer
+    public T pop() {
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+
+        T item = items.remove(items.size() - 1);
+        return item;
+    }
+
+    // Obtenir la taille de la pile
+    public int size() {
+        return items.size();
+    }
+
+    // Obtenir l'élément en haut de la pile sans le dépiler
+    public T peek() {
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+
+        return items.get(items.size() - 1);
+    }
+
+    // Vérifier si la pile est vide
+    public boolean isEmpty() {
+        return items.isEmpty();
+    }
+
+    public static void main(String[] args) {
+        Stack<Integer> stack = new Stack<>();
+
+        // Empiler des éléments
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+
+        // Obtenir la taille de la pile
+        System.out.println("Taille de la pile : " + stack.size());
+
+        // Obtenir l'élément en haut de la pile sans le dépiler
+        System.out.println("Sommet de la pile : " + stack.peek());
+
+        // Dépiler des éléments
+        System.out.println("Éléments dépilés : " + stack.pop() + ", " + stack.pop());
+
+        // Obtenir la taille mise à jour de la pile
+        System.out.println("Nouvelle taille de la pile : " + stack.size());
+    }
+}
+    
