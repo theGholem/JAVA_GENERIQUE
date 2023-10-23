@@ -1,0 +1,35 @@
+Créez une classe générique Queue<T> pour une file FIFO (First-In-First-Out).
+
+Description : Votre tâche consiste à créer une classe générique Queue<T> qui implémente une file FIFO pour 
+stocker des éléments de n'importe quel type T. Une file FIFO fonctionne selon le principe "le premier élément
+ajouté est le premier élément à être retiré". Vous devez ajouter des méthodes pour enfilement (enqueue) d'un 
+élément, défiler (dequeue) un élément, obtenir la taille de la file, et obtenir l'élément en tête de la file 
+sans le défiler.
+
+Instructions :
+
+   1- Créez une classe générique Queue<T> avec un paramètre de type T pour représenter le type des éléments 
+      stockés dans la file.
+
+   2- Utilisez une structure de données appropriée, telle qu'une liste ou un tableau, pour stocker les 
+      éléments de la file.
+
+   3- Ajoutez une méthode Enqueue pour enfiler un élément de type T à la fin de la file.
+
+   4- Ajoutez une méthode Dequeue pour défiler un élément de la file et le renvoyer. Assurez-vous de gérer 
+      le cas où la file est vide en renvoyant une valeur par défaut appropriée.
+
+   5- Ajoutez une méthode Count pour obtenir la taille actuelle de la file 
+     (le nombre d'éléments qu'elle contient).
+
+   6- Ajoutez une méthode Peek pour obtenir l'élément en tête de la file sans le défiler. 
+      Assurez-vous de gérer le cas où la file est vide en renvoyant une valeur par défaut appropriée.
+
+   7- Testez votre classe en créant une instance de Queue, en ajoutant des éléments, en retirant des 
+      éléments, en obtenant la taille de la file, et en consultant l'élément en tête de la file.
+
+Contraintes :
+
+    Assurez-vous que votre implémentation de la file FIFO est correcte et suit le principe FIFO.
+    Gérez les cas où la file est vide de manière appropriée.
+    Utilisez des génériques pour permettre le stockage de n'importe quel type d'élément dans la file.
